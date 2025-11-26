@@ -20,6 +20,7 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'is_admin',
         'name',
         'email',
         'password',
@@ -60,5 +61,10 @@ class User extends Authenticatable
             ->take(2)
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    public function stores()
+    {
+        return $this->hasMany(Store::class);
     }
 }
