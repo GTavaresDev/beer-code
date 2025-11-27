@@ -3,25 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Adress extends Model
+class CatalogItem extends Model
 {
-    protected $table = 'adresses';
-
     protected $fillable = [
         'store_id',
-        'zip_code',
-        'street',
-        'number',
-        'neighborhood',
-        'city',
-        'state',
-        'country',
-        'latitude',
-        'longitude',
+        'name',
+        'url',
+        'description',
+        'ingredients',
+        'price',
     ];
 
-    public function store()
+    protected $casts = [
+        'price' => 'integer',
+    ];
+
+    public function store(): BelongsTo
     {
         return $this->belongsTo(Store::class);
     }

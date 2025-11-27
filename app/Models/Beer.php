@@ -30,12 +30,12 @@ class Beer extends Model
             'first_brewed_at' => 'date',
             'abv' => 'decimal:2',
             'ibu' => 'decimal:2',
-        ]
+        ];
     }
 
     public function stores(): BelongsToMany
     {
-        return $this->belongsToMany(Store::class);
+        return $this->belongsToMany(Store::class)
         ->using(BeerStore::class)
         ->withPivot('price', 'promo_label', 'url')
         ->withTimestamps();
