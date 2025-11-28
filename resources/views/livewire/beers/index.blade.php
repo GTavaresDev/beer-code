@@ -10,5 +10,17 @@
                 Adicionar Cerveja
             </flux:button>
         </div>
+
+        <x-section>
+            <x-table>
+                <x-table.columns>
+                    <th class="px-4 py-2 text-left">Nome</th>
+                    <th class="px-4 py-2 text-left">Estilo</th>
+                    <th class="px-4 py-2 text-left">Teor Alcoólico</th>
+                    <th class="px-4 py-2 text-left">País</th>
+                    <th class="px-4 py-2 text-left">Ações</th>
+                </x-table.columns>
+            </x-table>
+        </x-section>
     </flux:main>
 </div>  
