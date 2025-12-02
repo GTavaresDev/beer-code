@@ -36,4 +36,6 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('beers', Index::class)->name('beers.index');
     Route::get('beers/create', function(){})->name('beers.create');
+    Route::get('/beers/{beer}/edit', [BeerController::class, 'edit'])->name('beers.edit');
+
 });
