@@ -5,15 +5,14 @@ namespace App\Livewire\Beers;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Services\BeerService;
+use App\Models\Beer;
 
 class Index extends Component
 {
     use WithPagination;
 
     public $sortBy = '';
-
     public $sortDirection = 'asc';
-
     public $filters = [];
 
     public function sort(string $field)
@@ -28,7 +27,7 @@ class Index extends Component
         $this->resetPage();
     }
 
-  public function filter()
+    public function filter()
     {
         $this->validate([
             'filters.name' => 'nullable|string|min:3|max:255',
@@ -40,6 +39,18 @@ class Index extends Component
         $this->resetPage();
     }
 
+    public function remove(int $beerId)
+    {
+        $beer = Beer::findOrFail($beerId);
+
+        $name = $beer->name;
+
+        $beer->delete();
+
+        return redirect()
+            ->route('beers.index')
+            ->success("Cerveja {$name} removida com sucesso!");
+    }
 
     public function render(BeerService $beerService)
     {

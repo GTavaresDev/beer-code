@@ -3,7 +3,7 @@
         <div>
             <flux:heading size="xl">Cerveja</flux:heading>
             <flux:text class="mt-2 mb-6 text-base">
-                Criar Cerveja
+                Atualizar Cerveja
             </flux:text>
         </div>
 
@@ -18,7 +18,7 @@
     </div>
 
     <x-section> 
-        <form wire:submit.prevent="save" class="space-y-6">
+        <form wire:submit="save" class="space-y-6">
 
             <flux:field>
                 <flux:input 
@@ -112,18 +112,19 @@
             </flux:field>
 
             <flux:separator/>
-
-            {{-- Componente de upload de imagens --}}
-            <livewire:components.image-uploader :model="null" />
-
+            <livewire:components.image-uploader 
+                :existing-images="$beerForm.images" 
+                wire:model="beerForm.images"
+            />
             <div class="flex justify-end">
                 <flux:button 
                     type="submit" 
                     color="primary"
                 >
-                    Criar Cerveja
+                    Atualizar Cerveja
                 </flux:button>
             </div>
+
 
         </form>
     </x-section>

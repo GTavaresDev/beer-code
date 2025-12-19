@@ -182,10 +182,22 @@
                             <x-table.cell>{{ $beer->ph }}</x-table.cell>
                             <x-table.cell>{{ $beer->volume }} ml</x-table.cell>
                             <x-table.cell>
-                                <a href="#" class="text-blue-500 underline">
-                                    Editar
-                                </a>
+                                    <flux:button
+                                        icon="pencil"
+                                        variant="ghost"
+                                        size="sm"
+                                        :href="route('beers.edit', $beer)"
+                                    />
+                                    <flux:button
+                                        icon="trash"
+                                        variant="ghost"
+                                        size="sm"
+                                        color="danger"
+                                        wire:click="remove({{ $beer->id }})"
+                                    />
                             </x-table.cell>
+  
+
                         </x-table.row>
                     @endforeach
                 </x-table.rows>

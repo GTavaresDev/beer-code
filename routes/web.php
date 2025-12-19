@@ -9,6 +9,8 @@ use Laravel\Fortify\Features;
 use App\Livewire\Beers\Index;
 use App\Livewire\Beers\Create;
 use App\Http\Controllers\BeerController; 
+use App\Livewire\Beers\Update;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('beers', Index::class)->name('beers.index');
     Route::get('beers/create', Create::class)->name('beers.create');
-    Route::get('/beers/{beer}/edit', [BeerController::class, 'edit'])->name('beers.edit');
+    Route::get('beers/{beer}/edit', Update::class)
+    ->name('beers.edit');
+
 
 });
